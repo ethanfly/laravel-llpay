@@ -12,13 +12,7 @@ namespace Ethan\LianLianPay\Services;
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
  */
 
-use Ethan\LianLianPay\Services\traits\BasePayTrait;
 use Illuminate\Config\Repository;
-
-require_once("./lib/llpay_core.function.php");
-require_once("./lib/llpay_md5.function.php");
-require_once("./lib/llpay_rsa.function.php");
-require_once("./lib/llpay_security.function.php");
 
 class LianLianPay
 {

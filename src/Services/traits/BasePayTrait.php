@@ -14,10 +14,9 @@ trait BasePayTrait
      *连连退款网关地址
      */
 
-    public function __construct(Repository $config)
+    public function __construct(array $config)
     {
-        $default = $config->get('default', 'dev');
-        $this->config = $config->get($default);
+        $this->config = $config;
     }
 
     /**
