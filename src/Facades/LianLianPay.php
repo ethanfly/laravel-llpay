@@ -2,13 +2,13 @@
 
 namespace Ethan\LianLianPay\Facades;
 
+use Ethan\LianLianPay\Services\InstantPay;
+use Ethan\LianLianPay\Services\Pay;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static string buildRequestMysign(array $para_sort)
- * @method static array buildRequestPara(array $para_temp)
- * @method static bool|string buildRequestJSON(array $para_temp, string $llpay_gateway_new)
- * @method static bool|string instantPay(string $no_order, float $money,string $acct_name,string $card_no,string $info_order,int $flag_card,string $notify_url,string $platform)
+ * @method static InstantPay InstantPay() 连连付款类
+ * @method static Pay Pay() 连连收款类
  * @see \Ethan\LianLianPay\Services\LianLianPay
  */
 class LianLianPay extends Facade
