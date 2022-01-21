@@ -6,9 +6,21 @@
 ``php artisan vendor:publish --provider="Ethan\LianLianPay\LianLianPayServiceProvider"``
 3. 修改配置文件``config/lianlianpay.php ``
 4. 使用方式
-```php
+   1. 连连付款类，需要另外开通，[查看连连开放平台文档](https://open.lianlianpay.com/docs/send-money/instant/overview.html)
+    ```php
+    LianLianPay::InstantPay();
+    ```
+   
+   2. 连连收款类
+   ```php
+   LianLianPay::Pay();
+   ```
+   
+   3. 连连对账单类，需要另外开通，[查看连连开放平台文档](https://open.lianlianpay.com/docs/development/report-sftp.html)
+   ```php
+   LianLianPay::Reconciliation();
+   ```
 
-LianLianPay::buildRequestJSON(array $para_temp, string $llpay_gateway_new);
-```
+
 
 [连连开放平台文档](https://open.lianlianpay.com/apis/get-started.html)

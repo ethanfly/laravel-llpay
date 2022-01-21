@@ -53,8 +53,6 @@ class LianLianPay
     {
         return new Reconciliation($this->config);
     }
-
-
 }
 
 ?>
