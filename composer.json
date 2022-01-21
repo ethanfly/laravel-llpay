@@ -1,0 +1,29 @@
+{
+    "name": "ethan/laravel-llpay",
+    "description": "lianlianpay sdk for laravel",
+    "authors": [
+        {
+            "name": "Ethan",
+            "email": "ethanfly@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ethan\\LianLianPay\\": "src/"
+        }
+    },
+    "require": {
+        "ext-openssl": "*",
+        "ext-curl": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ethan\\LianLianPay\\LianLianPayServiceProvider"
+            ],
+            "aliases": {
+                "LianLianPay": "Ethan\\LianLianPay\\Facades\\LianLianPay"
+            }
+        }
+    }
+}
