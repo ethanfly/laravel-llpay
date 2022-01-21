@@ -20,6 +20,7 @@
    ```php
    LianLianPay::Reconciliation();
    ```
+   4. 具体使用方式敬请期待[wiki](https://github.com/ethanfly/laravel-llpay/wiki)
 
 
 
