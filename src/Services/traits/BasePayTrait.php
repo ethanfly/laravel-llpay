@@ -10,13 +10,16 @@ trait BasePayTrait
 
     protected $config;
 
+    protected $env;
+
     /**
      *连连退款网关地址
      */
 
-    public function __construct(array $config)
+    public function __construct(array $config, string $env = 'dev')
     {
         $this->config = $config;
+        $this->env = $env;
     }
 
     /**
@@ -24,7 +27,7 @@ trait BasePayTrait
      * @param array $para_sort 已排序要签名的数组
      * @return string 签名结果字符串
      */
-    public function buildRequestMysign(array $para_sort)
+    protected function buildRequestMysign(array $para_sort)
     {
         //把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
         $prestr = $this->createLinkstring($para_sort);
@@ -47,7 +50,7 @@ trait BasePayTrait
      * @param array $para_temp 请求前的参数数组
      * @return array 要请求的参数数组
      */
-    public function buildRequestPara(array $para_temp)
+    protected function buildRequestPara(array $para_temp)
     {
         //除去待签名参数数组中的空值和签名参数
         $para_filter = $this->paraFilter($para_temp);
@@ -74,7 +77,6 @@ trait BasePayTrait
      */
     public function buildRequestJSON(array $para_temp, string $llpay_gateway_new)
     {
-        $sResult = '';
 
         //待请求参数数组字符串
         $request_data = $this->buildRequestPara($para_temp);
@@ -82,6 +84,17 @@ trait BasePayTrait
         //远程获取数据
         $sResult = $this->getHttpResponseJSON($llpay_gateway_new, $request_data);
 
-        return $sResult;
+        return $this->response($sResult);
+    }
+
+    /**
+     * 统一返回格式封装
+     * @param string $result
+     * @return mixed
+     * @author by ethan at 2022/1/24 14:24
+     */
+    protected function response(string $result)
+    {
+        return json_decode($result, true);
     }
 }

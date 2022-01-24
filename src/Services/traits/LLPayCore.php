@@ -25,7 +25,7 @@ trait LLPayCore
             $arg .= $key . "=" . $val . "&";
         }
         //去掉最后一个&字符
-        $arg = substr($arg, 0, strlen($arg) - 2);
+        $arg = rtrim($arg, '&');
         //file_put_contents("log.txt","转义前:".$arg."\n", FILE_APPEND);
         //如果存在转义字符，那么去掉转义
 //	if(get_magic_quotes_gpc()){$arg = stripslashes($arg);}
@@ -45,7 +45,7 @@ trait LLPayCore
             $arg .= $key . "=" . urlencode($val) . "&";
         }
         //去掉最后一个&字符
-        $arg = substr($arg, 0, strlen($arg) - 2);
+        $arg = rtrim($arg, '&');
 
         //如果存在转义字符，那么去掉转义
 //    if (get_magic_quotes_gpc()) {
@@ -139,7 +139,6 @@ trait LLPayCore
      */
     public function getHttpResponseJSON($url, $para)
     {
-
         $json = json_encode($para);
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //信任任何证书

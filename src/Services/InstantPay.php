@@ -30,8 +30,12 @@ class InstantPay
         $money_order = $money;
         //版本号
         $api_version = '1.0';
-        //实时付款交易接口地址
-        $url = 'https://instantpay.lianlianpay.com/paymentapi/payment.htm';
+        //实时付款交易接口地址(正式)
+        if ($this->env == 'production')
+            $url = 'https://instantpay.lianlianpay.com/paymentapi/payment.htm';
+        //测试
+        else
+            $url = 'https://test.lianlianpay-inc.com/paymentapi/payment.htm';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
@@ -76,8 +80,12 @@ class InstantPay
         /**************************请求参数**************************/
         //版本号
         $api_version = '1.0';
-        //确认付款接口地址
-        $url = 'https://instantpay.lianlianpay.com/paymentapi/confirmPayment.htm';
+        //确认付款接口地址正式
+        if ($this->env == 'production')
+            $url = 'https://instantpay.lianlianpay.com/paymentapi/confirmPayment.htm';
+        //测试
+        else
+            $url = 'https://test.lianlianpay-inc.com/paymentapi/confirmPayment.htm';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
@@ -116,7 +124,11 @@ class InstantPay
         //版本号
         $api_version = '1.0';
         //确认付款接口地址
-        $url = 'https://instantpay.lianlianpay.com/paymentapi/queryPayment.htm';
+        if ($this->env == 'production')
+            $url = 'https://instantpay.lianlianpay.com/paymentapi/queryPayment.htm';
+        //测试
+        else
+            $url = 'https://test.lianlianpay-inc.com/paymentapi/queryPayment.htm';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),

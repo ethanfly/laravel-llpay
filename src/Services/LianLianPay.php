@@ -1,6 +1,8 @@
-﻿<?php
+<?php
 
 namespace Ethan\LianLianPay\Services;
+
+use Illuminate\Config\Repository;
 
 /* *
  * 类名：LLpaySubmit
@@ -12,16 +14,17 @@ namespace Ethan\LianLianPay\Services;
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
  */
 
-use Illuminate\Config\Repository;
-
 class LianLianPay
 {
     protected $config;
 
+    protected $env;
+
     public function __construct(Repository $config)
     {
-        $default = $config->get('default', 'dev');
-        $this->config = $config->get($default);
+        $config = $config->get('lianlianpay');
+        $this->env = $config['default'] ?? 'dev';
+        $this->config = $config[$this->env] ?? [];
     }
 
     /**
@@ -31,7 +34,7 @@ class LianLianPay
      */
     public function InstantPay()
     {
-        return new InstantPay($this->config);
+        return new InstantPay($this->config, $this->env);
     }
 
     /**
@@ -41,7 +44,7 @@ class LianLianPay
      */
     public function Pay()
     {
-        return new Pay($this->config);
+        return new Pay($this->config, $this->env);
     }
 
     /**
@@ -51,8 +54,6 @@ class LianLianPay
      */
     public function Reconciliation()
     {
-        return new Reconciliation($this->config);
+        return new Reconciliation($this->config, $this->env);
     }
 }
-
-?>
