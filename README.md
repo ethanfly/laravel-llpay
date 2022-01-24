@@ -19,6 +19,15 @@
    3. 连连对账单类(待开发)，需要另外开通，[查看连连开放平台文档](https://open.lianlianpay.com/docs/development/report-sftp.html)
    ```php
    LianLianPay::Reconciliation();
+   //filesystems里的disk配置要配置连连对账单sftp服务器信息
+    'llpay' => [
+            'driver' => 'sftp',
+            'host' => 'dev.lianlianpay.com',
+            'username' => '20170328000044444',
+            'password' => '123456',
+            'port' => 9122,
+            'root' => '/20170328000044444',
+        ],
    ```
    4. 具体使用方式敬请期待[wiki](https://github.com/ethanfly/laravel-llpay/wiki)
 

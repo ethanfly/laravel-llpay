@@ -29,7 +29,9 @@ LIANLIAN_PUBLICK_KEY,
         //签名方式 不需修改
         'sign_type' => strtoupper('RSA'),
         //字符编码格式 目前支持 gbk 或 utf-8
-        'input_charset' => strtolower('utf-8')
+        'input_charset' => strtolower('utf-8'),
+        //连接对账单服务器的配置（filesystems里的disk配置驱动选择sftp）
+        'disk' => 'llpay'
     ],
     'production' => [
         //商户编号是商户在连连钱包支付平台上开设的商户号码，为18位数字，如：201306081000001016
@@ -51,7 +53,9 @@ LIANLIAN_PUBLICK_KEY,
         //签名方式 不需修改
         'sign_type' => strtoupper('RSA'),
         //字符编码格式 目前支持 gbk 或 utf-8
-        'input_charset' => strtolower('utf-8')
+        'input_charset' => strtolower('utf-8'),
+        //连接对账单服务器的配置（filesystems里的disk配置驱动选择sftp）
+        'disk' => 'llpay'
     ]
 ];
 ?>
