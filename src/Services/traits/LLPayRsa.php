@@ -32,7 +32,7 @@ trait LLPayRsa
         openssl_sign($data, $sign, $res, OPENSSL_ALGO_MD5);
 
         //释放资源
-        openssl_free_key($res);
+//        openssl_free_key($res);
 
         //base64编码
         $sign = base64_encode($sign);
@@ -60,7 +60,7 @@ trait LLPayRsa
         $result = (bool)openssl_verify($data, base64_decode($sign), $res, OPENSSL_ALGO_MD5);
 
         //释放资源
-        openssl_free_key($res);
+//        openssl_free_key($res);
 
         //返回资源是否成功
         return $result;
