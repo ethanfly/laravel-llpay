@@ -11,12 +11,12 @@
     LianLianPay::InstantPay();
     ```
    
-   2. 连连收款类
+   2. 连连收款类(待开发)
    ```php
    LianLianPay::Pay();
    ```
    
-   3. 连连对账单类，需要另外开通，[查看连连开放平台文档](https://open.lianlianpay.com/docs/development/report-sftp.html)
+   3. 连连对账单类(待开发)，需要另外开通，[查看连连开放平台文档](https://open.lianlianpay.com/docs/development/report-sftp.html)
    ```php
    LianLianPay::Reconciliation();
    ```
