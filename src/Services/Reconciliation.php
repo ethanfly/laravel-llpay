@@ -50,7 +50,12 @@ class Reconciliation
                     $temp = [];
                     $columns = explode(",", $datum);
                     foreach ($keys as $i => $key) {
-                        $temp[$key] = $columns[$i] ?? '';
+                        if (in_array($key, ['shddsj', 'gxsj'])) {
+                            $time = $columns[$i] ?? '';
+                            $temp[$key] = !empty($time) ? date('YmdHis', strtotime($columns[$i])) : '';
+                        } else {
+                            $temp[$key] = $columns[$i] ?? '';
+                        }
                     }
                     $result[] = $temp;
                 }
