@@ -37,12 +37,23 @@ class Reconciliation
         $file_name = $type . '_' . $oid . '_' . $date . '.txt';
 
         $file = $this->getFile($file_name);
+        $keys = [
+            "shddh", "shh", "shddsj", "shywbh", "ytddh", "ytzwrq", "ddje",
+            "shskbz", "jyzt", "gxsj", "sxf", "zfcp", "zffs", "ddxx", "skfyh",
+            "skfzh", "skfmc"
+        ];
         if ($file !== null) {
             $data = explode("\n", $file);
             $result = [];
-            foreach ($data as $datum) {
-                if (strlen($datum) > 0)
-                    $result[] = explode(",", $datum);
+            foreach ($data as $k => $datum) {
+                if (strlen($datum) > 0 && $k > 0) {
+                    $temp = [];
+                    $columns = explode(",", $datum);
+                    foreach ($keys as $i => $key) {
+                        $temp[$key] = $columns[$i] ?? '';
+                    }
+                    $result[] = $temp;
+                }
             }
             return $result;
         } else {
