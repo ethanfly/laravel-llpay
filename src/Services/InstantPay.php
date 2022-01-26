@@ -21,7 +21,7 @@ class InstantPay
      * @return bool|string
      * @author by ethan at 2022/1/21 16:16
      */
-    public function instantPay(string $no_order, float $money, string $acct_name, string $card_no, string $info_order, int $flag_card, string $notify_url, string $platform = '')
+    public function instantPay(string $no_order, float $money, string $acct_name, string $card_no, string $info_order, int $flag_card, string $bank_code, string $notify_url, string $platform = '')
     {
         /**************************请求参数**************************/
         //商户时间
@@ -51,6 +51,8 @@ class InstantPay
             "platform" => $platform,
             "api_version" => $api_version
         );
+        if ($flag_card == 1)
+            $parameter['bank_code'] = $bank_code;
         //建立请求
         $sortPara = $this->buildRequestPara($parameter);
         //传json字符串
