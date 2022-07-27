@@ -11,7 +11,7 @@
     LianLianPay::InstantPay();
     ```
    
-   2. 连连收款类
+   2. 连连收款类 [查看连连开放平台文档](https://open.lianlianpay.com/apis/bankcardprepay.html)
    ```php
    LianLianPay::Pay();
    ```
