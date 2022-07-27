@@ -39,7 +39,6 @@ class InstantPay
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
-            "sign_type" => trim($this->config['sign_type']),
             "no_order" => $no_order,
             "dt_order" => $dt_order,
             "money_order" => $money_order,
@@ -91,7 +90,6 @@ class InstantPay
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
-            "sign_type" => trim($this->config['sign_type']),
             "no_order" => $no_order,
             "confirm_code" => $confirm_code,
             "notify_url" => $notify_url,
@@ -134,15 +132,12 @@ class InstantPay
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
-            "sign_type" => trim($this->config['sign_type']),
             "no_order" => $no_order,
             "platform" => $platform,
             "api_version" => $api_version
         );
         //建立请求
-        $sortPara = $this->buildRequestPara($parameter);
-
-        $html_text = $this->buildRequestJSON($sortPara, $url);
+        $html_text = $this->buildRequestJSON($parameter, $url);
         return $html_text;
     }
 }

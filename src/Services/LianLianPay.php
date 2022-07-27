@@ -2,6 +2,7 @@
 
 namespace Ethan\LianLianPay\Services;
 
+use Ethan\LianLianPay\Services\traits\BasePayTrait;
 use Illuminate\Config\Repository;
 
 /* *
@@ -16,6 +17,8 @@ use Illuminate\Config\Repository;
 
 class LianLianPay
 {
+    protected $ll_pay_config;
+
     protected $config;
 
     protected $env;
@@ -25,6 +28,7 @@ class LianLianPay
         $config = $config->get('lianlianpay');
         $this->env = $config['default'] ?? 'dev';
         $this->config = $config[$this->env] ?? [];
+        $this->ll_pay_config = $config;
     }
 
     /**
@@ -32,8 +36,9 @@ class LianLianPay
      * @return InstantPay
      * @author by ethan at 2022/1/21 17:45
      */
-    public function InstantPay()
+    public function InstantPay(?string $default_config = null)
     {
+        $this->setDefaultConfig($default_config);
         return new InstantPay($this->config, $this->env);
     }
 
@@ -42,9 +47,21 @@ class LianLianPay
      * @return Pay
      * @author by ethan at 2022/1/21 17:47
      */
-    public function Pay()
+    public function Pay(?string $default_config = null)
     {
+        $this->setDefaultConfig($default_config);
         return new Pay($this->config, $this->env);
+    }
+
+    /**
+     * 退款类
+     * @return Refund
+     * @author by ethan at 2022/1/21 17:47
+     */
+    public function Refund(?string $default_config = null)
+    {
+        $this->setDefaultConfig($default_config);
+        return new Refund($this->config, $this->env);
     }
 
     /**
@@ -52,8 +69,22 @@ class LianLianPay
      * @return Reconciliation
      * @author by ethan at 2022/1/21 17:47
      */
-    public function Reconciliation()
+    public function Reconciliation(?string $default_config = null)
     {
+        $this->setDefaultConfig($default_config);
         return new Reconciliation($this->config, $this->env);
+    }
+
+    /**
+     * 设置默认配置
+     * @param string|null $env
+     * @author ethan at 2022/7/27 17:06
+     */
+    private function setDefaultConfig(?string $env = null)
+    {
+        if (!empty($env)) {
+            $this->env = $env;
+            $this->config = $this->ll_pay_config[$env] ?? [];
+        }
     }
 }

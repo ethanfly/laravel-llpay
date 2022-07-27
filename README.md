@@ -16,7 +16,12 @@
    LianLianPay::Pay();
    ```
    
-   3. 连连对账单类，需要另外开通，[查看连连开放平台文档](https://open.lianlianpay.com/docs/development/report-sftp.html)
+   3. 连连退款类 [查看连连开放平台文档](https://open.lianlianpay.com/apis/refund.html)
+   ```php
+   LianLianPay::Refund();
+   ```
+   
+   4. 连连对账单类，需要另外开通，[查看连连开放平台文档](https://open.lianlianpay.com/docs/development/report-sftp.html)
    ```php
    LianLianPay::Reconciliation();
    //filesystems里的disk配置要配置连连对账单sftp服务器信息

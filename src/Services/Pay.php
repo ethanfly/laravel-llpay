@@ -30,11 +30,10 @@ class Pay
             $url = 'https://mpayapi.lianlianpay.com/v1/bankcardprepay';
         //测试
         else
-            $url = 'https://test.lianlianpay-inc.com/v1/bankcardprepay';
+            $url = '';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
-            "sign_type" => trim($this->config['sign_type']),
             "user_id" => $user_id,
             "busi_partner" => $busi_partner,
             'no_order' => $no_order,
@@ -87,11 +86,10 @@ class Pay
             $url = 'https://mpayapi.lianlianpay.com/v1/bankcardprepay';
         //测试
         else
-            $url = 'https://test.lianlianpay-inc.com/v1/bankcardprepay';
+            $url = '';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
-            "sign_type" => trim($this->config['sign_type']),
             "user_id" => $user_id,
             "busi_partner" => $busi_partner,
             'no_order' => $no_order,
@@ -139,20 +137,17 @@ class Pay
             $url = 'https://mpayapi.lianlianpay.com/v1/bankcardpay';
         //测试
         else
-            $url = 'https://test.lianlianpay-inc.com/v1/bankcardpay';
+            $url = '';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
-            "sign_type" => trim($this->config['sign_type']),
             "token" => $token,
             "no_order" => $no_order,
             "money_order" => $money_order,
             'verify_code' => $verify_code
         );
         //建立请求
-        $sortPara = $this->buildRequestPara($parameter);
-
-        $html_text = $this->buildRequestJSON($sortPara, $url);
+        $html_text = $this->buildRequestJSON($parameter, $url);
         return $html_text;
     }
 
@@ -172,7 +167,7 @@ class Pay
             $url = 'https://queryapi.lianlianpay.com/orderquery.htm';
         //测试
         else
-            $url = 'https://test.lianlianpay-inc.com/orderquery.htm';
+            $url = '';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
@@ -182,9 +177,7 @@ class Pay
             'query_version' => '1.1'
         );
         //建立请求
-        $sortPara = $this->buildRequestPara($parameter);
-
-        $html_text = $this->buildRequestJSON($sortPara, $url);
+        $html_text = $this->buildRequestJSON($parameter, $url);
         return $html_text;
     }
 }
