@@ -20,6 +20,7 @@
    ```php
    LianLianPay::Reconciliation();
    //filesystems里的disk配置要配置连连对账单sftp服务器信息
+   //需要安装laravel的sftp插件
     'llpay' => [
             'driver' => 'sftp',
             'host' => 'dev.lianlianpay.com',
