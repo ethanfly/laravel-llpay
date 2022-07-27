@@ -1,6 +1,7 @@
 {
     "name": "ethan/laravel-llpay",
     "description": "lianlianpay sdk for laravel",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ethan",
