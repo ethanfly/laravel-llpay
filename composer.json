@@ -17,7 +17,7 @@
         "php": "^7.4||^8.0",
         "ext-openssl": "*",
         "ext-curl": "*",
-        "league/flysystem-sftp": "1.*"
+        "league/flysystem-sftp-v3": "^3.0"
     },
     "extra": {
         "laravel": {
