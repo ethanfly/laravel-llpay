@@ -11,7 +11,7 @@
     LianLianPay::InstantPay();
     ```
    
-   2. 连连收款类(待开发)
+   2. 连连收款类
    ```php
    LianLianPay::Pay();
    ```
