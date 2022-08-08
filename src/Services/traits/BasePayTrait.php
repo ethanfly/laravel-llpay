@@ -68,6 +68,9 @@ trait BasePayTrait
         foreach ($para_sort as $key => $value) {
             $para_sort[$key] = $value;
         }
+        if ($this->config['debug']) {
+            \Log::info($para_sort);
+        }
         return $para_sort;
         //return urldecode(json_encode($para_sort));
     }
