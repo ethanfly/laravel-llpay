@@ -8,8 +8,6 @@ return [
     * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
     */
     'default' => env('LLPAY_CONFIG_DEFAULT', 'dev'),
-    //是否输出日志
-    'debug' => env('LLPAY_DEBUG', false),
     //多个环境可以切换
     'dev' => [
         //商户编号是商户在连连钱包支付平台上开设的商户号码，为18位数字，如：201306081000001016
@@ -33,7 +31,9 @@ LIANLIAN_PUBLICK_KEY,
         //字符编码格式 目前支持 gbk 或 utf-8
         'input_charset' => strtolower('utf-8'),
         //连接对账单服务器的配置（filesystems里的disk配置驱动选择sftp）
-        'disk' => 'llpay'
+        'disk' => 'llpay',
+        //是否输出日志
+        'debug' => env('LLPAY_DEBUG', false),
     ],
     'production' => [
         //商户编号是商户在连连钱包支付平台上开设的商户号码，为18位数字，如：201306081000001016
@@ -57,7 +57,9 @@ LIANLIAN_PUBLICK_KEY,
         //字符编码格式 目前支持 gbk 或 utf-8
         'input_charset' => strtolower('utf-8'),
         //连接对账单服务器的配置（filesystems里的disk配置驱动选择sftp）
-        'disk' => 'llpay'
+        'disk' => 'llpay',
+        //是否输出日志
+        'debug' => env('LLPAY_DEBUG', false),
     ]
 ];
 ?>
