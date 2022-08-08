@@ -54,7 +54,7 @@ class Pay
             "oid_partner" => trim($this->config['oid_partner']),
             "pay_load" => $this->ll_encrypt($json, $this->config['LIANLIAN_PUBLICK_KEY']) //请求参数加密
         );
-        $html_text = $this->buildRequestJSON($parameterRequest, $url);
+        $html_text = $this->buildRequestJSON($parameterRequest, $url, build_para: false);
         return $html_text;
     }
 

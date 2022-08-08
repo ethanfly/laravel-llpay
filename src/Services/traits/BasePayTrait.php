@@ -56,11 +56,12 @@ trait BasePayTrait
         $para_filter = $this->paraFilter($para_temp);
         //对待签名参数数组排序
         $para_sort = $this->argSort($para_filter);
+
+        $para_sort['sign_type'] = strtoupper(trim($this->config['sign_type']));
         //生成签名结果
         $mysign = $this->buildRequestMysign($para_sort);
         //签名结果与签名方式加入请求提交参数组中
         $para_sort['sign'] = $mysign;
-        $para_sort['sign_type'] = strtoupper(trim($this->config['sign_type']));
         foreach ($para_sort as $key => $value) {
             $para_sort[$key] = $value;
         }
@@ -75,11 +76,15 @@ trait BasePayTrait
      * @param string $llpay_gateway_new 请求url
      * @return bool|string 连连支付处理结果
      */
-    public function buildRequestJSON(array $para_temp, string $llpay_gateway_new)
+    public function buildRequestJSON(array $para_temp, string $llpay_gateway_new, bool $build_para = true)
     {
 
-        //待请求参数数组字符串
-        $request_data = $this->buildRequestPara($para_temp);
+        if ($build_para) {
+            //待请求参数数组字符串
+            $request_data = $this->buildRequestPara($para_temp);
+        } else {
+            $request_data = $para_temp;
+        }
 
         //远程获取数据
         $sResult = $this->getHttpResponseJSON($llpay_gateway_new, $request_data);
