@@ -46,6 +46,9 @@ class Pay
         if (!empty($options)) {
             $parameter = array_merge($parameter, $options);
         }
+        if ($this->config['debug']) {
+            \Log::info($parameter);
+        }
         //建立请求
         $sortPara = $this->buildRequestPara($parameter);
         //传json字符串

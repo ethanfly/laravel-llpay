@@ -31,6 +31,9 @@ trait BasePayTrait
     {
         //把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
         $prestr = $this->createLinkstring($para_sort);
+        if ($this->config['debug']) {
+            \Log::info($prestr);
+        }
         $mysign = "";
         switch (strtoupper(trim($this->config['sign_type']))) {
             case "MD5" :
@@ -85,7 +88,9 @@ trait BasePayTrait
         } else {
             $request_data = $para_temp;
         }
-
+        if ($this->config['debug']) {
+            \Log::info($request_data);
+        }
         //远程获取数据
         $sResult = $this->getHttpResponseJSON($llpay_gateway_new, $request_data);
 
@@ -100,6 +105,9 @@ trait BasePayTrait
      */
     protected function response(string $result)
     {
+        if ($this->config['debug']) {
+            \Log::info($result);
+        }
         return json_decode($result, true);
     }
 }
