@@ -55,7 +55,7 @@ trait BasePayTrait
      */
     protected function buildRequestPara(array $para_temp)
     {
-        $para_sort['sign_type'] = strtoupper(trim($this->config['sign_type']));
+        $para_temp['sign_type'] = strtoupper(trim($this->config['sign_type']));
         //除去待签名参数数组中的空值和签名参数
         $para_filter = $this->paraFilter($para_temp);
         //对待签名参数数组排序
