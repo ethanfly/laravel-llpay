@@ -9,6 +9,39 @@ class Pay
     use BasePayTrait;
 
     /**
+     * 收银台支付
+     * @param array $options
+     * @return bool|string
+     * @author ethan at 2022/8/16 17:22
+     */
+    public function payCreateBill(array $options)
+    {
+        /**************************请求参数**************************/
+        //确认付款接口地址
+        if ($this->env == 'production')
+            $url = 'https://payserverapi.lianlianpay.com/v1/paycreatebill';
+        //测试
+        else
+            $url = '';
+        //构造要请求的参数数组，无需改动
+        $parameter = array(
+            "oid_partner" => trim($this->config['oid_partner']),
+            "api_version" => '1.0',
+            'time_stamp' => date('YmdHis'),
+            'busi_partner' => '109001',
+        );
+        if (!empty($options)) {
+            $parameter = array_merge($parameter, $options);
+        }
+        if ($this->config['debug']) {
+            \Log::info($parameter);
+        }
+        //建立请求
+        $html_text = $this->buildRequestJSON($parameter, $url, build_para: false);
+        return $html_text;
+    }
+
+    /**
      * 微信支付宝支付创单API
      * @param string $user_id 用户编号。 商户系统内对用户的唯一编码，可以为自定义字符串，加密密文或者邮箱等可以唯一定义用户的标识。
      * @param string $busi_partner 虚拟商品销售：101001。实物商品销售：109001。当busi_partner与您的商户号的业务属性不相符时， 该次请求将返回请求无效。
