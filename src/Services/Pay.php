@@ -37,7 +37,7 @@ class Pay
             \Log::info($parameter);
         }
         //建立请求
-        $html_text = $this->buildRequestJSON($parameter, $url, build_para: false);
+        $html_text = $this->buildRequestJSON($parameter, $url);
         return $html_text;
     }
 
