@@ -92,6 +92,7 @@ trait BasePayTrait
         }
         if ($this->config['debug']) {
             \Log::info($request_data);
+            \Log::info('请求url：' . $llpay_gateway_new);
         }
         //远程获取数据
         $sResult = $this->getHttpResponseJSON($llpay_gateway_new, $request_data);
