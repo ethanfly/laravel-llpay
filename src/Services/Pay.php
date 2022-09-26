@@ -22,7 +22,7 @@ class Pay
             $url = 'https://payserverapi.lianlianpay.com/v1/paycreatebill';
         //测试
         else
-            $url = '';
+            $url = 'https://test.lianlianpay-inc.com/fourelementapi/v1/paycreatebill';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
@@ -122,7 +122,7 @@ class Pay
             $url = 'https://mpayapi.lianlianpay.com/v1/bankcardprepay';
         //测试
         else
-            $url = '';
+            $url = 'https://test.lianlianpay-inc.com/mpayapi/v1/bankcardprepay';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
@@ -173,7 +173,7 @@ class Pay
             $url = 'https://mpayapi.lianlianpay.com/v1/bankcardpay';
         //测试
         else
-            $url = '';
+            $url = 'https://test.lianlianpay-inc.com/mpayapi/v1/bankcardpay';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
@@ -203,7 +203,7 @@ class Pay
             $url = 'https://queryapi.lianlianpay.com/orderquery.htm';
         //测试
         else
-            $url = '';
+            $url = 'https://test.lianlianpay-inc.com/queryapi/orderquery.htm';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),

@@ -26,7 +26,7 @@ class Refund
             $url = 'https://traderapi.lianlianpay.com/refund.htm';
         //测试
         else
-            $url = '';
+            $url = 'https://test.lianlianpay-inc.com/traderapi/refund.htm';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
@@ -57,7 +57,7 @@ class Refund
             $url = 'https://queryapi.lianlianpay.com/refundquery.htm';
         //测试
         else
-            $url = '';
+            $url = 'https://test.lianlianpay-inc.com/queryapi/refundquery.htm';
         //构造要请求的参数数组，无需改动
         $parameter = array(
             "oid_partner" => trim($this->config['oid_partner']),
