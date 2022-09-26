@@ -80,11 +80,11 @@ class LianLianPay
      * @param string|null $env
      * @author ethan at 2022/7/27 17:06
      */
-    private function setDefaultConfig(?string $env = null)
+    private function setDefaultConfig(?string $config_key = null)
     {
-        if (!empty($env)) {
-            $this->env = $env;
-            $this->config = $this->ll_pay_config[$env] ?? [];
+        if (!empty($config_key)) {
+//            $this->env = $env;
+            $this->config = $this->ll_pay_config[$config_key] ?? [];
         }
     }
 }
